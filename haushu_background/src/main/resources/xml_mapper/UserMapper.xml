@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.userinfo.dao.UserDao">
+    <select id="getUser" parameterType="string" resultType="com.example.demo.userinfo.pojo.User">
+        select usr, pass
+        from _usr
+        where usr = #{username}
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.demo.userinfo.pojo.User"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into _usr (usr, pass) VALUE (#{username}, #{password})
+    </insert>
+</mapper>
