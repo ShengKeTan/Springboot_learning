@@ -8,6 +8,10 @@
         where usr = #{username}
     </select>
 
+    <select id="getAll" resultType="com.example.demo.userinfo.pojo.User">
+        select * from _usr
+    </select>
+
     <insert id="insertUser" parameterType="com.example.demo.userinfo.pojo.User"
             useGeneratedKeys="true" keyProperty="id">
         insert into _usr (usr, pass) VALUE (#{username}, #{password})

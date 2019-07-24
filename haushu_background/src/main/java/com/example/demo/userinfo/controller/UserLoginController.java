@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +35,7 @@ public class UserLoginController {
     }*/
 
     //@RequestMapping(value = "/huasu/login", method = RequestMethod.POST)
-    @RequestMapping(value = "/huasu/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/huashu/login", method = RequestMethod.POST)
     @ResponseBody
     public String login(@RequestBody Map<String, Object> data) {
         String username = (String) data.get("username");
@@ -47,10 +49,12 @@ public class UserLoginController {
         }
         return "login fail";
     }
-    @RequestMapping(value = "/huasu/table", method = RequestMethod.GET)
+    @RequestMapping("/table")
     @ResponseBody
-    public String table(String data){
-        return "nnn";
+    public List<User> table(){
+        List<User> list = new ArrayList<>();
+        list.addAll(loginService.getAll());
+        return list;
     }
 
 }
